@@ -17,6 +17,7 @@ function initMap() {
 
   // This is autocomplete for use in the location search.
   var locationAutocomplete = new google.maps.places.Autocomplete(document.getElementById('location'));
+  locationAutocomplete.bindTo('bounds', map);
 
   // This will initiate location search
   document.getElementById('locationBtn').addEventListener('click', function() {
