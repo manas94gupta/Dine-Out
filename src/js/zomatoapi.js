@@ -36,7 +36,6 @@ function searchZomato(pos) {
             console.log(xhr.statusText);
         },
         success: function (response) {
-            console.log(response);
             var data = response.restaurants;
             createMarker(data);
         }

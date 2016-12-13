@@ -7,13 +7,6 @@ function initMap() {
     zoom: 6
     });
 
-    // var atta = {lat: 28.572728, lng: 77.325981};
-    // var marker = new google.maps.Marker({
-    //   position: atta,
-    //   map: map,
-    //   title: 'Atta!'
-    // });
-
     // This is autocomplete for use in the location search.
     var locationAutocomplete = new google.maps.places.Autocomplete(document.getElementById('location'));
     locationAutocomplete.bindTo('bounds', map);
