@@ -6,6 +6,10 @@ body {
   padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     width: 100%;
     height: 100%;
@@ -26,3 +30,41 @@ main {
 #map {
     height: 100%;
 }
+
+
+/****************Infowindow****************/
+.infowindow {
+	color: #555;
+	min-height: 200px;
+	width: 100%;
+}
+
+.infowindowImage {
+	display: block;
+	width: 100%;
+}
+
+.infowindowRatings {
+    font-size: 1.8em;
+	text-align: right;
+	padding: 1em 0;
+}
+
+.infowindowImage img {
+    border-radius: 5px;
+	max-width: 100%;
+    height: auto;
+}
+
+.infowindowTitle {
+	font-size: 2em;
+	text-align: center;
+	padding: 1em .5em;
+}
+
+.infowindowAddress {
+	color: #777;
+	font-size: .9em;
+}
+
+/******************************************/
