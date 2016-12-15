@@ -1,10 +1,26 @@
 // Map variable
 var map;
-//  Markers array
+//  Markers array/ Model
 var markers = [];
+
+var ViewModel = function() {
+    var self = this;
+
+    // This will hold the markers data after every request
+    self.dineList = ko.observableArray([]);
+};
+
+var viewModel = new ViewModel();
+
+// Apply knockout binding to ViewModel
+ko.applyBindings(viewModel);
+
+
 
 // Create markers for the places returned by Zomato search API request
 function createMarker(data) {
+    // Clear markers array
+    markers = [];
     // Info Window
     var infowindow = new google.maps.InfoWindow();
 
@@ -36,6 +52,8 @@ function createMarker(data) {
             populateInfoWindow(this, infowindow);
         });
     });
+    // Pass the markers array to the knockout viewModel
+    viewModel.dineList(markers);
 }
 
 // This function populates the infowindow when the marker is clicked with the
