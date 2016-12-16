@@ -2,9 +2,10 @@
 var map;
 // Markers array/ Model
 var markers = [];
-// for markers infowindow
+// For markers infowindow
 var infowindow;
 
+// Knockout ViewModel
 var ViewModel = function() {
     var self = this;
 
@@ -18,7 +19,11 @@ var ViewModel = function() {
         showMarkers();
     }
 
+    // Open infowindow on click on a li element
     self.openInfoWindow = function(data) {
+        // Toggle marker bounce animation
+        toggleBounce(data);
+
         populateInfoWindow(data);
     }
 };
@@ -66,6 +71,9 @@ function createMarker(data) {
         markers.push(marker);
         // Create an onclick event to open an infowindow on each marker.
         marker.addListener('click', function() {
+            // Toggle marker bounce animation
+            toggleBounce(marker);
+
             populateInfoWindow(this);
         });
     });
@@ -122,4 +130,11 @@ function populateInfoWindow(marker) {
             infowindow.marker = null;
         });
     }
+}
+
+function toggleBounce(marker) {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+    setTimeout(function() {
+        marker.setAnimation(null);
+    }, 1500);
 }
