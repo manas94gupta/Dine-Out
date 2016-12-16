@@ -11,10 +11,10 @@ function initMap() {
     var locationAutocomplete = new google.maps.places.Autocomplete(document.getElementById('location'));
     locationAutocomplete.bindTo('bounds', map);
 
-    // This will initiate location search
-    document.getElementById('locationBtn').addEventListener('click', function() {
-      setLocation();
-    });
+    // // This will initiate location search
+    // document.getElementById('locationBtn').addEventListener('click', function() {
+    //   setLocation();
+    // });
 
     // Get geolocation of the user
     if (navigator.geolocation) {
@@ -43,32 +43,4 @@ function handleLocationError(browserHasGeolocation, pos) {
     //     'Error: The Geolocation service failed.' :
     //     'Error: Your browser doesn\'t support geolocation.');
     console.log('error');
-}
-
-// This function takes the input value in the location text input
-// locates it, and then sets the center of map to that area, so
-// that the user can search in a specific area.
-function setLocation() {
-    // Initialize the geocoder.
-    var geocoder = new google.maps.Geocoder();
-    // Get the address or place that the user entered.
-    var location = document.getElementById('location').value;
-    // Make sure the address isn't blank.
-    if (location == '') {
-        window.alert('You must enter an area, or address.');
-    } else {
-        // Geocode the address/area entered to get the center. Then, center the
-        // map on it and zoom in
-        geocoder.geocode(
-            { address: location
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
-                    map.setZoom(16);
-                    searchZomato(results[0].geometry.location);
-                } else {
-                    window.alert('We could not find that location - try entering a more specific place.');
-                }
-        });
-    }
 }

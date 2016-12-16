@@ -13,8 +13,8 @@
     <body>
         <div class="container">
             <aside>
-                <input id="location" type="text" placeholder="Enter a Location or Allow GPS">
-                <input id="locationBtn" type="button" value="Go">
+                <input data-bind="textInput: locationSearchInput" id="location" type="text" placeholder="Enter a Location or Allow GPS">
+                <input data-bind="click: locationSearch" id="locationBtn" type="button" value="Go">
                 <div class="dineSearch">
                     <!-- Bind to searchInput and on typing initiate filterList() -->
                     <input data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">

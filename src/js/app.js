@@ -11,7 +11,16 @@ var ViewModel = function() {
 
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
+    // Location search input
+    self.locationSearchInput = ko.observable("");
+    // Restaurants search input
     self.searchInput = ko.observable("");
+
+    // Set the searched location as maps centre
+    self.locationSearch = function(data) {
+        console.log(self.locationSearchInput());
+        setLocation(self.locationSearchInput());
+    }
 
     // Filter list based on search input
     self.filterList = function() {
@@ -132,9 +141,38 @@ function populateInfoWindow(marker) {
     }
 }
 
+// Toggle the animation of marker icons to bounce
 function toggleBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
         marker.setAnimation(null);
     }, 1500);
+}
+
+// This function takes the input value in the location text input
+// locates it, and then sets the center of map to that area, so
+// that the user can search in a specific area.
+function setLocation(location) {
+    // Initialize the geocoder.
+    var geocoder = new google.maps.Geocoder();
+    // // Get the address or place that the user entered.
+    // var location = document.getElementById('location').value;
+    // Make sure the address isn't blank.
+    if (location == '') {
+        window.alert('You must enter an area, or address.');
+    } else {
+        // Geocode the address/area entered to get the center. Then, center the
+        // map on it and zoom in
+        geocoder.geocode(
+            { address: location
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    map.setZoom(16);
+                    searchZomato(results[0].geometry.location);
+                } else {
+                    window.alert('We could not find that location - try entering a more specific place.');
+                }
+        });
+    }
 }
