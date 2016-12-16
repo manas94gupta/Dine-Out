@@ -20,7 +20,7 @@
                     <!--Bind ul to the viewModel.dineList array-->
                     <ul data-bind="foreach: dineList">
                         <!--Display each markers title-->
-                        <li data-bind="visible: $data.display(), text: $data.title"></li>
+                        <li data-bind="visible: $data.display(), text: $data.title, click: $parent.openInfoWindow"></li>
                     </ul>
                 </div>
             </aside>

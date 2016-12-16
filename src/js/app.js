@@ -2,6 +2,8 @@
 var map;
 // Markers array/ Model
 var markers = [];
+// for markers infowindow
+var infowindow;
 
 var ViewModel = function() {
     var self = this;
@@ -14,6 +16,10 @@ var ViewModel = function() {
     self.filterList = function() {
         getFilterList(self.searchInput());
         showMarkers();
+    }
+
+    self.openInfoWindow = function(data) {
+        populateInfoWindow(data);
     }
 };
 
@@ -31,7 +37,7 @@ function createMarker(data) {
     // Clear markers array
     markers = [];
     // Info Window
-    var infowindow = new google.maps.InfoWindow();
+    infowindow = new google.maps.InfoWindow();
 
     data.forEach(function(data) {
         // Create a marker per location, and put into markers array.
@@ -60,7 +66,7 @@ function createMarker(data) {
         markers.push(marker);
         // Create an onclick event to open an infowindow on each marker.
         marker.addListener('click', function() {
-            populateInfoWindow(this, infowindow);
+            populateInfoWindow(this);
         });
     });
     // Push the marker to the knockout viewModel.dineList array
@@ -92,7 +98,7 @@ function getFilterList(searchInput) {
 
 // This function populates the infowindow when the marker is clicked with the
 // info regarding that marker.
-function populateInfoWindow(marker, infowindow) {
+function populateInfoWindow(marker) {
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
         infowindow.marker = marker;
