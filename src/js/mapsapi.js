@@ -42,6 +42,7 @@ function handleLocationError(browserHasGeolocation, pos) {
     // infoWindow.setContent(browserHasGeolocation ?
     //     'Error: The Geolocation service failed.' :
     //     'Error: Your browser doesn\'t support geolocation.');
+    console.log('error');
 }
 
 // This function takes the input value in the location text input

@@ -1,6 +1,6 @@
 // Map variable
 var map;
-//  Markers array/ Model
+// Markers array/ Model
 var markers = [];
 
 var ViewModel = function() {
@@ -8,10 +8,19 @@ var ViewModel = function() {
 
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
+    self.searchInput = ko.observable("");
+
+    // Filter list based on search input
+    self.filterList = function() {
+        getFilterList(self.searchInput());
+        showMarkers();
+    }
 };
 
 var viewModel = new ViewModel();
 
+// Disable knockout from using jQuery for handling UI events
+ko.options.useOnlyNativeEvents = true;
 // Apply knockout binding to ViewModel
 ko.applyBindings(viewModel);
 
@@ -27,13 +36,15 @@ function createMarker(data) {
     data.forEach(function(data) {
         // Create a marker per location, and put into markers array.
         var marker = new google.maps.Marker({
-            map: map,
+            // map: map,
             position: {
                 lat: parseFloat(data.restaurant.location.latitude, 10),
                 lng: parseFloat(data.restaurant.location.longitude, 10)
             },
             title: data.restaurant.name,
             animation: google.maps.Animation.DROP,
+            // Marker/List display will be toggled based on this property
+            display: ko.observable(true),
             info: {
                 url: data.restaurant.url,
                 avgCost: data.restaurant.average_cost_for_two,
@@ -52,9 +63,32 @@ function createMarker(data) {
             populateInfoWindow(this, infowindow);
         });
     });
-    // Pass the markers array to the knockout viewModel
+    // Push the marker to the knockout viewModel.dineList array
     viewModel.dineList(markers);
+    showMarkers();
 }
+
+// Display marker based on their display property
+function showMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+        if (markers[i].display()) {
+            markers[i].setMap(map);
+        } else {
+            markers[i].setMap(null);
+        }
+    }
+};
+
+// Filter the list and markers on search input based on their display property
+function getFilterList(searchInput) {
+    for (var i = 0; i < markers.length; i++) {
+        if (markers[i].title.toUpperCase().indexOf(searchInput.toUpperCase()) == -1) {
+            markers[i].display(false);
+        } else {
+            markers[i].display(true);
+        }
+    }
+};
 
 // This function populates the infowindow when the marker is clicked with the
 // info regarding that marker.

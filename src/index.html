@@ -16,11 +16,11 @@
                 <input id="location" type="text" placeholder="Enter a Location or Allow GPS">
                 <input id="locationBtn" type="button" value="Go">
                 <div class="dineSearch">
-                    <input type="text">
+                    <input data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">
                     <!--Bind ul to the viewModel.dineList array-->
                     <ul data-bind="foreach: dineList">
                         <!--Display each markers title-->
-                        <li data-bind="text: $data.title"></li>
+                        <li data-bind="visible: $data.display(), text: $data.title"></li>
                     </ul>
                 </div>
             </aside>
