@@ -37,6 +37,7 @@ function searchZomato(pos) {
         data: {
             'lat': pos.lat,
             'lon': pos.lng,
+            'radius': 2000,
             'category': categoryId
         },
         error: function (xhr) {

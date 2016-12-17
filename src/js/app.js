@@ -90,12 +90,24 @@ function createMarker(data) {
 
 // Display marker based on their display property
 function showMarkers() {
+    var bounds = new google.maps.LatLngBounds();
     for (var i = 0; i < markers.length; i++) {
         if (markers[i].display()) {
             markers[i].setMap(map);
+            // Extend bounds only if lat, lng is specified
+            if (markers[i].position.lat() != 0 || markers[i].position.lng() != 0) {
+                bounds.extend(markers[i].position);
+            }
         } else {
             markers[i].setMap(null);
         }
+    }
+    // Extend the boundaries of the map for each marker
+    map.fitBounds(bounds);
+    
+    // If no results found then alert user
+    if (markers.length == 0) {
+        alert("No results found in 2 kilometer radius");
     }
 };
 
