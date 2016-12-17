@@ -20,8 +20,14 @@ var API_KEY = '8807504cbe0f07822eb741817f606d60';
 // });
 
 function searchZomato(pos) {
+    var categoryId;
+    if (!viewModel.selectedCategory()) {
+        categoryId = "0";
+    } else {
+        categoryId = viewModel.selectedCategory().id;
+    }
     $.ajax({
-        // method: GET,
+        method: 'GET',
         url: 'https://developers.zomato.com/api/v2.1/search',
         dataType: 'json',
         headers: {
@@ -30,7 +36,8 @@ function searchZomato(pos) {
         },
         data: {
             'lat': pos.lat,
-            'lon': pos.lng
+            'lon': pos.lng,
+            'category': categoryId
         },
         error: function (xhr) {
             console.log(xhr.statusText);

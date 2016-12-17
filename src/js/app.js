@@ -1,6 +1,6 @@
 // Map variable
 var map;
-// Markers array/ Model
+// Markers array/ Markers Model
 var markers = [];
 // For markers infowindow
 var infowindow;
@@ -12,6 +12,9 @@ var ViewModel = function() {
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
     self.searchInput = ko.observable("");
+    // This will hold the categories data
+    self.categories = ko.observableArray(categoriesData);
+    self.selectedCategory = ko.observable("a");
 
     // Filter list based on search input
     self.filterList = function() {
@@ -39,6 +42,8 @@ ko.applyBindings(viewModel);
 
 // Create markers for the places returned by Zomato search API request
 function createMarker(data) {
+    // Remove current markers from map
+    removeMarkers();
     // Clear markers array
     markers = [];
     // Info Window
@@ -79,6 +84,7 @@ function createMarker(data) {
     });
     // Push the marker to the knockout viewModel.dineList array
     viewModel.dineList(markers);
+    // Show markers on map
     showMarkers();
 }
 
@@ -92,6 +98,13 @@ function showMarkers() {
         }
     }
 };
+
+// Remove current markers from map
+function removeMarkers() {
+    for (var i = 0; i < markers.length; i++) {
+            markers[i].setMap(null);
+    }
+}
 
 // Filter the list and markers on search input based on their display property
 function getFilterList(searchInput) {
