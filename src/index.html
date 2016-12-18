@@ -14,32 +14,33 @@
     </head>
     <body>
         <header>
-            <button class="fa fa-bars fa-lg menubtn"></button>
+            <button data-bind="click: openSidebar" class="fa fa-bars fa-lg menubtn"></button>
             <div class="headername">
                 Dine Out
             </div>
             <div class="error"></div>
         </header>
-        <div class="container">
-            <aside>
-                <input id="location" type="text" placeholder="Enter a Location or Allow GPS">
-                <select data-bind="options: categories,
-                                   optionsText: 'name',
-                                   value: selectedCategory,
-                                   optionsCaption: 'Select Category'" class="categories">
-                </select>
-                <input id="locationBtn" type="button" value="Go">
+        <aside data-bind="style: { width: toggleSidebar() ? '320px' : '0px' }">
+            <input id="location" type="text" placeholder="Enter a Location or Allow GPS">
+            <select data-bind="options: categories,
+                               optionsText: 'name',
+                               value: selectedCategory,
+                               optionsCaption: 'Select Category'" class="categories">
+            </select>
+            <input id="locationBtn" type="button" value="Go">
 
-                <div class="dineSearch">
-                    <!-- Bind to searchInput and on typing initiate filterList() -->
-                    <input data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">
-                    <!-- Bind ul to the viewModel.dineList array -->
-                    <ul data-bind="foreach: dineList">
-                        <!-- Display each markers title -->
-                        <li data-bind="visible: $data.display(), text: $data.title, click: $parent.openInfoWindow"></li>
-                    </ul>
-                </div>
-            </aside>
+            <div class="dineSearch">
+                <!-- Bind to searchInput and on typing initiate filterList() -->
+                <input data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">
+                <!-- Bind ul to the viewModel.dineList array -->
+                <ul data-bind="foreach: dineList">
+                    <!-- Display each markers title -->
+                    <li data-bind="visible: $data.display(), text: $data.title, click: $parent.openInfoWindow"></li>
+                </ul>
+            </div>
+        </aside>
+        <div data-bind="click: toggleSidebar() ? closeSidebar : '',
+                        style: { backgroundColor: toggleSidebar() ? 'rgba(0,0,0,0.9)' : '' }" class="container">
             <main>
                 <div id="map"></div>
             </main>

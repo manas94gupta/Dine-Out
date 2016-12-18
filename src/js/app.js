@@ -9,12 +9,26 @@ var infowindow;
 var ViewModel = function() {
     var self = this;
 
+    // This will be used to open and close sidebar
+    self.toggleSidebar = ko.observable(false);
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
+    // This will hold the search input
     self.searchInput = ko.observable("");
     // This will hold the categories data
     self.categories = ko.observableArray(categoriesData);
-    self.selectedCategory = ko.observable("a");
+    // This will hold the selected category
+    self.selectedCategory = ko.observable("");
+
+    // Open sidebar on clicking menu button
+    self.openSidebar = function() {
+        self.toggleSidebar(true);
+    }
+
+    // Close sidebar on clicking close button or outside
+    self.closeSidebar = function() {
+        self.toggleSidebar(false);
+    }
 
     // Filter list based on search input
     self.filterList = function() {
@@ -104,7 +118,7 @@ function showMarkers() {
     }
     // Extend the boundaries of the map for each marker
     map.fitBounds(bounds);
-    
+
     // If no results found then alert user
     if (markers.length == 0) {
         alert("No results found in 2 kilometer radius");
