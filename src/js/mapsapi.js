@@ -49,6 +49,8 @@ function handleLocationError(browserHasGeolocation, pos) {
 // locates it, and then sets the center of map to that area, so
 // that the user can search in a specific area.
 function setLocation() {
+    // Close sidebar
+    viewModel.closeSidebar();
     // Initialize the geocoder.
     var geocoder = new google.maps.Geocoder();
     // Get the address or place that the user entered.

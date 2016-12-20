@@ -7,7 +7,7 @@
         <meta name="author" content=" Manas Gupta ">
         <title>Dine Out</title>
         <link href="css/styles.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -21,22 +21,30 @@
             <div class="error"></div>
         </header>
         <aside data-bind="style: { width: toggleSidebar() ? '320px' : '0px' }">
-            <input id="location" type="text" placeholder="Enter a Location or Allow GPS">
-            <select data-bind="options: categories,
-                               optionsText: 'name',
-                               value: selectedCategory,
-                               optionsCaption: 'Select Category'" class="categories">
-            </select>
-            <input id="locationBtn" type="button" value="Go">
+            <div class="sidebarHead">
+                <span class="heading">Dine Out</span>
+                <button data-bind="click: closeSidebar" class="fa fa-times fa-lg sidebtn"></button>
+            </div>
+            <div class="form">
+                <input id="location" type="text" placeholder="Enter a Location">
+                <select data-bind="options: categories,
+                                   optionsText: 'name',
+                                   value: selectedCategory,
+                                   optionsCaption: 'Select Category'" class="categories">
+                </select>
+                <button id="locationBtn" type="button">Go</button>
 
-            <div class="dineSearch">
-                <!-- Bind to searchInput and on typing initiate filterList() -->
-                <input data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">
-                <!-- Bind ul to the viewModel.dineList array -->
-                <ul data-bind="foreach: dineList">
-                    <!-- Display each markers title -->
-                    <li data-bind="visible: $data.display(), text: $data.title, click: $parent.openInfoWindow"></li>
-                </ul>
+                <div class="dineSearch">
+                    <!-- Bind to searchInput and on typing initiate filterList() -->
+                    <input class="search" data-bind="textInput: searchInput, event: { keyup: filterList }" type="text" placeholder="Search..">
+                    <!-- Bind ul to the viewModel.dineList array -->
+                    <ul class="list" data-bind="foreach: dineList">
+                        <!-- Display each markers title -->
+                        <li class="listItem" data-bind="visible: $data.display(),
+                                                        text: $data.title,
+                                                        click: $parent.openInfoWindow"></li>
+                    </ul>
+                </div>
             </div>
         </aside>
         <div data-bind="click: toggleSidebar() ? closeSidebar : '',

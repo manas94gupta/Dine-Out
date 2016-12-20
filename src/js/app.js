@@ -40,6 +40,8 @@ var ViewModel = function() {
     self.openInfoWindow = function(data) {
         // Toggle marker bounce animation
         toggleBounce(data);
+        // Close sidebar
+        self.closeSidebar();
 
         populateInfoWindow(data);
     }
