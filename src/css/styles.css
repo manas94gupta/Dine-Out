@@ -66,9 +66,8 @@ header {
 .error {
     float: right;
     padding: 15px;
-    font-weight: bold;
     text-align: right;
-    color: #fff;
+    color: #e54b3d;
 }
 
 /******************************************/

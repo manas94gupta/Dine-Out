@@ -41,7 +41,8 @@ function searchZomato(pos) {
             'category': categoryId
         },
         error: function (xhr) {
-            console.log(xhr.statusText);
+            console.log('Error: ' + xhr.statusText);
+            viewModel.errorText("Error: Dine Out data not available, try again later");
         },
         success: function (response) {
             var data = response.restaurants;

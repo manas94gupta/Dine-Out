@@ -11,6 +11,8 @@ var ViewModel = function() {
 
     // This will be used to open and close sidebar
     self.toggleSidebar = ko.observable(false);
+    // This will hold error text if any
+    self.errorText = ko.observable("");
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
     // This will hold the search input

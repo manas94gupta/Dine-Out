@@ -39,10 +39,13 @@ function initMap() {
 
 // This will handle any error in detection geoloaction
 function handleLocationError(browserHasGeolocation, pos) {
-    // infoWindow.setContent(browserHasGeolocation ?
-    //     'Error: The Geolocation service failed.' :
-    //     'Error: Your browser doesn\'t support geolocation.');
-    console.log('error');
+    if (browserHasGeolocation) {
+        // Geolocation service failed
+        console.log('Error: Denied geolocation, try selecting location from the menu');
+    } else {
+        console.log('Error: This browser doesn\'t support geolocation.');
+        viewModel.errorText("Error: This browser doesn\'t support geolocation.");
+    }
 }
 
 // This function takes the input value in the location text input
