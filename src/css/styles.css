@@ -122,7 +122,7 @@ aside {
 input,
 select {
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     width: 100%;
     /*font-size: 0.9em;*/
     padding: 0.8em;
@@ -142,13 +142,23 @@ select {
     }
 }
 
-input:focus{
+#location {
+    margin-bottom: 5px;
+}
+
+#location:focus{
     background: #3ec9c3;
     color: #341f48;
     border: 2px solid #341f48;
-    outline: none;
 }
 
+select,
+#location,
+#locationBtn {
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+}
+
+input,
 select:focus {
     outline: none;
 }
@@ -188,7 +198,7 @@ input:focus:input:-moz-placeholder {
 #locationBtn {
     background-color: #341f48;
     color: #3ec9c3;
-    margin: 5px 37% 0;
+    margin: 5px 37% 5px;
     width: 60px;
     height: 40px;
     border-radius: 20px;
