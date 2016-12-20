@@ -169,12 +169,16 @@ function populateInfoWindow(marker) {
 				'<div class="infowindowTitle">' +
                     '<a target="_blank" href=\"' + marker.info.url + '\">' + marker.title + '</a>' +
                 '</div>' +
-				'<div class="infowindowAddress">' + marker.info.address + '</div>' +
-				'<div class="infowindowRatings" style=\"color: ' + '#' + marker.info.ratingColor + '\">' +
-					'<span class="ratingText">' + marker.info.ratingText + '</span>' +
-					'<span class="ratings">' + marker.info.rating + '</span>' +
-				'</div>' +
-				'<div class="infowindowImage">' +
+                '<div class="content">' +
+                    '<div class="infowindowAddress">' + 'Address: ' + '<span class="info">' + marker.info.address + '</span>' + '</div><br>' +
+    				'<div class="infowindowRatings" style=\"background-color: ' + '#' + marker.info.ratingColor + '\">' +
+    					'<h3 class="ratings">' + marker.info.rating + '/5' + '</h3>' +
+    					'<span class="ratingText">' + marker.info.ratingText + '</span>' +
+    				'</div>' +
+                    '<div class="infowindowCuisines">' + 'Cuisines: ' + '<span class="info">' + marker.info.cuisines + '</span>' + '</div><br>' +
+                    '<div class="infowindowAvgCost">' + 'Average Cost For Two: ' + '<span class="info"> Rs. ' + marker.info.avgCost + '</span>' + '</div>' +
+                '<div>' +
+                '<div class="infowindowImage">' +
 					'<img src=\"' + marker.info.image + '\" alt=\"' + marker.title + '\" />' +
 				'</div>' +
 			'</div>'
@@ -187,6 +191,7 @@ function populateInfoWindow(marker) {
     }
 }
 
+// Animate marker icon on interaction
 function toggleBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {

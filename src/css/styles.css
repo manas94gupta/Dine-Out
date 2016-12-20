@@ -256,13 +256,13 @@ input:focus:input:-moz-placeholder {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #341f48;
+    background-color: darkgrey;
     outline: 1px solid slategrey;
     border-radius: 10px;
 }
 
-body::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
+aside::-webkit-scrollbar-thumb {
+    background-color: #341f48;
 }
 
 /******************************************/
@@ -290,9 +290,13 @@ main {
 
 /****************Infowindow****************/
 .infowindow {
-	color: #555;
+	color: #777;
+    /*color: #341f48;*/
 	min-height: 200px;
 	width: 100%;
+    /*background: #3ec9c3;*/
+    /*border: 4px solid #341f48;*/
+    border-radius: 20px;
 }
 
 .infowindowImage {
@@ -301,26 +305,89 @@ main {
 }
 
 .infowindowRatings {
+    display: inline-block;
+    /*font-size: 1.8em;*/
+	text-align: center;
+	padding: 0.2em 1.2em;
+    border-radius: 10px;
+    float: right;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    color: #341f48;
+}
+
+.infowindowRatings h3 {
     font-size: 1.8em;
-	text-align: right;
-	padding: 1em 0;
+}
+
+.infowindowRatings span {
+    font-size: 1em;
 }
 
 .infowindowImage img {
-    border-radius: 5px;
+    border-radius: 10px;
 	max-width: 100%;
     height: auto;
 }
 
 .infowindowTitle {
-	font-size: 2em;
+	font-size: 2.5em;
+    /*color: #341f48;*/
 	text-align: center;
-	padding: 1em .5em;
+	padding: 0.5em .5em;
+    /*background: #8f9cb5;*/
+    border-radius: 10px 10px 0 0;
+    background: #eaeaea;
+}
+
+.infowindowTitle a {
+    text-decoration: none;
+    font-weight: 500;
+    /*color: #ea5144;*/
+    color: #5f239b;
+    border-bottom: 2px solid #5f239b;
+
+    -webkit-transition: font-size 0.3s ease, border-bottom 0.3s ease;
+    -moz-transition: font-size 0.3s ease, border-bottom 0.3s ease;
+    transition: font-size 0.3s ease, border-bottom 0.3s ease;
+}
+
+.infowindowTitle a:hover {
+    font-size: 1.2em;
+    border-bottom: 4px solid #5f239b;
+}
+
+.content {
+    background: #eaeaea;
 }
 
 .infowindowAddress {
-	color: #777;
-	font-size: .9em;
+    display: inline-block;
+	font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.infowindowCuisines {
+    display: inline-block;
+	font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.infowindowAvgCost {
+    display: inline-block;
+	font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.info {
+    font-size: 1.1em;
+    color: #353535;
 }
 
 /******************************************/
