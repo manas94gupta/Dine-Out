@@ -154,6 +154,8 @@ select {
 select,
 #location,
 #locationBtn {
+    -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.3);
 }
 
@@ -289,14 +291,41 @@ main {
 
 
 /****************Infowindow****************/
+
+/*This is the container that wraps infowindow*/
+.gm-style-iw {
+    background: transparent !important;
+    top: 14px !important;
+    left: 0 !important;
+    border-radius: 5px 5px 10px 10px;
+}
+
 .infowindow {
-	color: #777;
-    /*color: #341f48;*/
-	min-height: 200px;
-	width: 100%;
-    /*background: #3ec9c3;*/
-    /*border: 4px solid #341f48;*/
-    border-radius: 20px;
+    background: #fff;
+    border-radius: 5px 5px 10px 10px;
+}
+
+.infowindowTitle {
+    font-family: 'Pacifico', cursive;
+	font-size: 2.5em;
+    font-weight: 500;
+	padding: 10px;
+	background-color: #341f48;
+	color: #3ec9c3;
+}
+
+.infowindowTitle a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #3ec9c3;
+
+    -webkit-transition: font-size 0.3s ease;
+    -moz-transition: font-size 0.3s ease;
+    transition: font-size 0.3s ease;
+}
+
+.infowindowTitle a:hover {
+    font-size: 1.2em;
 }
 
 .infowindowImage {
@@ -308,7 +337,8 @@ main {
     display: inline-block;
     /*font-size: 1.8em;*/
 	text-align: center;
-	padding: 0.2em 1.2em;
+	padding: 0.28em 0.5em;
+    line-height: 0.5em;
     border-radius: 10px;
     float: right;
     margin-bottom: 5px;
@@ -317,48 +347,17 @@ main {
 }
 
 .infowindowRatings h3 {
-    font-size: 1.8em;
+    font-size: 0.8em;
 }
 
 .infowindowRatings span {
-    font-size: 1em;
+    font-size: 0.5em;
 }
 
 .infowindowImage img {
     border-radius: 10px;
 	max-width: 100%;
     height: auto;
-}
-
-.infowindowTitle {
-	font-size: 2.5em;
-    /*color: #341f48;*/
-	text-align: center;
-	padding: 0.5em .5em;
-    /*background: #8f9cb5;*/
-    border-radius: 10px 10px 0 0;
-    background: #eaeaea;
-}
-
-.infowindowTitle a {
-    text-decoration: none;
-    font-weight: 500;
-    /*color: #ea5144;*/
-    color: #5f239b;
-    border-bottom: 2px solid #5f239b;
-
-    -webkit-transition: font-size 0.3s ease, border-bottom 0.3s ease;
-    -moz-transition: font-size 0.3s ease, border-bottom 0.3s ease;
-    transition: font-size 0.3s ease, border-bottom 0.3s ease;
-}
-
-.infowindowTitle a:hover {
-    font-size: 1.2em;
-    border-bottom: 4px solid #5f239b;
-}
-
-.content {
-    background: #eaeaea;
 }
 
 .infowindowAddress {

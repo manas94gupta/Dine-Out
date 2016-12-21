@@ -162,19 +162,21 @@ function getFilterList(searchInput) {
 // This function populates the infowindow when the marker is clicked with the
 // info regarding that marker.
 function populateInfoWindow(marker) {
+    // Style infowindow
+    infowindowStyle();
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
         infowindow.marker = marker;
         var content = '<div class="infowindow">' +
 				'<div class="infowindowTitle">' +
                     '<a target="_blank" href=\"' + marker.info.url + '\">' + marker.title + '</a>' +
+                    '<div class="infowindowRatings" style=\"background-color: ' + '#' + marker.info.ratingColor + '\">' +
+                        '<h3 class="ratings">' + marker.info.rating + '/5' + '</h3>' +
+                        '<span class="ratingText">' + marker.info.ratingText + '</span>' +
+                    '</div>' +
                 '</div>' +
                 '<div class="content">' +
                     '<div class="infowindowAddress">' + 'Address: ' + '<span class="info">' + marker.info.address + '</span>' + '</div><br>' +
-    				'<div class="infowindowRatings" style=\"background-color: ' + '#' + marker.info.ratingColor + '\">' +
-    					'<h3 class="ratings">' + marker.info.rating + '/5' + '</h3>' +
-    					'<span class="ratingText">' + marker.info.ratingText + '</span>' +
-    				'</div>' +
                     '<div class="infowindowCuisines">' + 'Cuisines: ' + '<span class="info">' + marker.info.cuisines + '</span>' + '</div><br>' +
                     '<div class="infowindowAvgCost">' + 'Average Cost For Two: ' + '<span class="info"> Rs. ' + marker.info.avgCost + '</span>' + '</div>' +
                 '<div>' +

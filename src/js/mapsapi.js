@@ -129,3 +129,50 @@ function setLocation() {
         });
     }
 }
+
+function infowindowStyle() {
+    // Maps infowindow style
+    // The google.maps.event.addListener() event waits for
+    // the creation of the infowindow HTML structure 'domready'
+    // and before the opening of the infowindow defined styles
+    // are applied.
+    google.maps.event.addListener(infowindow, 'domready', function() {
+        // The div which wraps the contents of the infowindow
+        var iwWrap = $('.gm-style-iw');
+
+        // The div to be changed is above the .gm-style-iw div
+        // Using .prev() function that div is selected
+        var iwBackground = iwWrap.prev();
+
+        // Remove the background shadow div
+        iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+        // Remove the white background div
+        iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+        // Style tail arrow
+        iwBackground.children(':nth-child(3)').find('div').children().css({'z-index': '1',
+                                                                           '-webkit-box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)',
+                                                                           '-moz-box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)',
+                                                                           'box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)'});
+
+        // Style close button
+        // Close button is the next div to the .gm-style-iw div
+        // Using .next() function that div is selected
+        var iwCloseBtn = iwWrap.next();
+
+        // Style close button
+        iwCloseBtn.css({'opacity': '1',
+                        'right': '50px',
+                        'top': '7px',
+                        'border-radius': '13px',
+                        '-webkit-box-shadow': '0px 0px 0px 5px #2a9a95',
+                        '-moz-box-shadow': '0px 0px 0px 5px #2a9a95',
+                        'box-shadow': '0px 0px 0px 5px #2a9a95'});
+
+        // Overrides the deafult opacity change to 0.7 on mouseout
+        iwCloseBtn.mouseout(function(){
+            $(this).css({opacity: '1'});
+        });
+    });
+}
