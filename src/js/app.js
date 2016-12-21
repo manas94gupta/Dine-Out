@@ -181,7 +181,7 @@ function populateInfoWindow(marker) {
                     '<div class="infowindowAvgCost">' + 'Average Cost For Two: ' + '<span class="info"> Rs. ' + marker.info.avgCost + '</span>' + '</div>' +
                 '<div>' +
                 '<div class="infowindowImage">' +
-					'<img src=\"' + marker.info.image + '\" alt=\"' + marker.title + '\" />' +
+					'<img src=\"' + marker.info.image + '\" alt=\"Image not available\" />' +
 				'</div>' +
 			'</div>'
         infowindow.setContent(content);

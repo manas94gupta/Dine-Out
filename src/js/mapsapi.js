@@ -152,6 +152,8 @@ function infowindowStyle() {
 
         // Style tail arrow
         iwBackground.children(':nth-child(3)').find('div').children().css({'z-index': '1',
+                                                                           'background-color': '#3ec9c3',
+                                                                           'outline': '2px solid #341f48',
                                                                            '-webkit-box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)',
                                                                            '-moz-box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)',
                                                                            'box-shadow': '0 0 4px 1px rgba(0, 0, 0, 0.3)'});
@@ -164,11 +166,18 @@ function infowindowStyle() {
         // Style close button
         iwCloseBtn.css({'opacity': '1',
                         'right': '50px',
-                        'top': '7px',
+                        'top': '11px',
                         'border-radius': '13px',
                         '-webkit-box-shadow': '0px 0px 0px 5px #2a9a95',
                         '-moz-box-shadow': '0px 0px 0px 5px #2a9a95',
                         'box-shadow': '0px 0px 0px 5px #2a9a95'});
+
+        // It seems that on android and ios clicking on close button doesn't close
+        // the infowindow, instead there's a new img element after the close button
+        // div which closes the infowindow
+        // This img div needs to be positioned correctly
+        var iwCloseBtnMobile = iwCloseBtn.next();
+        iwCloseBtnMobile.css({'right': '38px'});
 
         // Overrides the deafult opacity change to 0.7 on mouseout
         iwCloseBtn.mouseout(function(){

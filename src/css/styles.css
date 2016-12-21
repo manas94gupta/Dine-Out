@@ -258,13 +258,13 @@ input:focus:input:-moz-placeholder {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
+    background-color: #341f48;
     outline: 1px solid slategrey;
     border-radius: 10px;
 }
 
-aside::-webkit-scrollbar-thumb {
-    background-color: #341f48;
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
 }
 
 /******************************************/
@@ -295,14 +295,15 @@ main {
 /*This is the container that wraps infowindow*/
 .gm-style-iw {
     background: transparent !important;
-    top: 14px !important;
+    top: 19px !important;
     left: 0 !important;
     border-radius: 5px 5px 10px 10px;
 }
 
 .infowindow {
     background: #fff;
-    border-radius: 5px 5px 10px 10px;
+    border-radius: 5px 5px 0 0;
+    border: 2px solid #341f48;
 }
 
 .infowindowTitle {
@@ -328,11 +329,6 @@ main {
     font-size: 1.2em;
 }
 
-.infowindowImage {
-	display: block;
-	width: 100%;
-}
-
 .infowindowRatings {
     display: inline-block;
     /*font-size: 1.8em;*/
@@ -354,39 +350,37 @@ main {
     font-size: 0.5em;
 }
 
-.infowindowImage img {
-    border-radius: 10px;
-	max-width: 100%;
-    height: auto;
+.content {
+    background-color: #3ec9c3;
 }
 
-.infowindowAddress {
-    display: inline-block;
-	font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-left: 5px;
-}
-
-.infowindowCuisines {
-    display: inline-block;
-	font-size: 1.1em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin-left: 5px;
-}
-
+.infowindowAddress,
+.infowindowCuisines,
 .infowindowAvgCost {
     display: inline-block;
 	font-size: 1.1em;
     font-weight: bold;
     margin-bottom: 5px;
     margin-left: 5px;
+    color: #353535;
 }
 
 .info {
     font-size: 1.1em;
     color: #353535;
+}
+
+.infowindowImage {
+	display: block;
+	width: 90%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.infowindowImage img {
+    border-radius: 10px;
+	max-width: 100%;
+    height: auto;
 }
 
 /******************************************/
