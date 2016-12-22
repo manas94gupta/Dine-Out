@@ -18,7 +18,6 @@ var ViewModel = function() {
 
     // Set the searched location as maps centre
     self.locationSearch = function(data) {
-        console.log(self.locationSearchInput());
         setLocation(self.locationSearchInput());
     }
 

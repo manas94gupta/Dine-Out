@@ -11,6 +11,14 @@ function initMap() {
     var locationAutocomplete = new google.maps.places.Autocomplete(document.getElementById('location'));
     locationAutocomplete.bindTo('bounds', map);
 
+    // Autocomplete fires a place_changed event when autocomplete suggestion is
+    // is selected. Since knockout doesn't detect this change in the input field,
+    // getPlace function of place autocomplete is used to change the
+    // locationSearchInput in the viewModel.
+    locationAutocomplete.addListener('place_changed', function(){
+        viewModel.locationSearchInput(locationAutocomplete.getPlace().formatted_address);
+    });
+
     // // This will initiate location search
     // document.getElementById('locationBtn').addEventListener('click', function() {
     //   setLocation();
