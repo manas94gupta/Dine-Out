@@ -48,8 +48,8 @@
             </div>
         </aside>
         <div data-bind="click: toggleSidebar() ? closeSidebar : '',
-                        style: { backgroundColor: toggleSidebar() ? 'rgba(0,0,0,0.9)' : '' }" class="container">
-            <main>
+                        style: { backgroundColor: toggleSidebar() ? '#000' : '#fff' }" class="container">
+            <main data-bind="style: { opacity: toggleSidebar() ? '0.1' : '1' }">
                 <div id="map"></div>
             </main>
         </div>
