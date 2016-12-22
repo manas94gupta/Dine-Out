@@ -11,8 +11,8 @@ function initMap() {
     // to change style
     map.setOptions({ styles: '' });
 
-    // Create the DIV to hold the control and call the CenterControl()
-    // constructor passing in this DIV.
+    // Create the div to hold the dark mode and normal mode button
+    // which will toggle the map styles
     var centerControlDiv = document.createElement('div');
     var centerControl = new CenterControl(centerControlDiv, map);
     centerControlDiv.index = 1;
@@ -22,10 +22,18 @@ function initMap() {
     var locationAutocomplete = new google.maps.places.Autocomplete(document.getElementById('location'));
     locationAutocomplete.bindTo('bounds', map);
 
-    // This will initiate location search
-    document.getElementById('locationBtn').addEventListener('click', function() {
-      setLocation();
+    // Autocomplete fires a place_changed event when autocomplete suggestion is
+    // is selected. Since knockout doesn't detect this change in the input field,
+    // getPlace function of place autocomplete is used to change the
+    // locationSearchInput in the viewModel.
+    locationAutocomplete.addListener('place_changed', function(){
+        viewModel.locationSearchInput(locationAutocomplete.getPlace().formatted_address);
     });
+
+    // // This will initiate location search
+    // document.getElementById('locationBtn').addEventListener('click', function() {
+    //   setLocation();
+    // });
 
     // Get geolocation of the user
     if (navigator.geolocation) {
@@ -97,36 +105,6 @@ function handleLocationError(browserHasGeolocation, pos) {
     } else {
         console.log('Error: This browser doesn\'t support geolocation.');
         viewModel.errorText("Error: This browser doesn\'t support geolocation.");
-    }
-}
-
-// This function takes the input value in the location text input
-// locates it, and then sets the center of map to that area, so
-// that the user can search in a specific area.
-function setLocation() {
-    // Close sidebar
-    viewModel.closeSidebar();
-    // Initialize the geocoder.
-    var geocoder = new google.maps.Geocoder();
-    // Get the address or place that the user entered.
-    var location = document.getElementById('location').value;
-    // Make sure the address isn't blank.
-    if (location == '') {
-        window.alert('You must enter an area, or address.');
-    } else {
-        // Geocode the address/area entered to get the center. Then, center the
-        // map on it and zoom in
-        geocoder.geocode(
-            { address: location
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK) {
-                    map.setCenter(results[0].geometry.location);
-                    map.setZoom(16);
-                    searchZomato(results[0].geometry.location);
-                } else {
-                    window.alert('We could not find that location - try entering a more specific place.');
-                }
-        });
     }
 }
 

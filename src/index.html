@@ -26,13 +26,13 @@
                 <button data-bind="click: closeSidebar" class="fa fa-times fa-lg sidebtn"></button>
             </div>
             <div class="form">
-                <input id="location" type="text" placeholder="Enter a Location">
+                <input data-bind="textInput: locationSearchInput" id="location" type="text" placeholder="Enter a Location">
                 <select data-bind="options: categories,
                                    optionsText: 'name',
                                    value: selectedCategory,
                                    optionsCaption: 'Select Category'" class="categories">
                 </select>
-                <button id="locationBtn" type="button">Go</button>
+                <button data-bind="click: locationSearch" id="locationBtn">Go</button>
 
                 <div class="dineSearch">
                     <!-- Bind to searchInput and on typing initiate filterList() -->
