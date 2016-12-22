@@ -26,7 +26,7 @@
                 <button data-bind="click: closeSidebar" class="fa fa-times fa-lg sidebtn"></button>
             </div>
             <div class="form">
-                <input data-bind="textInput: locationSearchInput" id="location" type="text" placeholder="Enter a Location">
+                <input data-bind="textInput: locationSearchInput, event: { keypress: searchOnEnter }" id="location" type="text" placeholder="Enter a Location">
                 <select data-bind="options: categories,
                                    optionsText: 'name',
                                    value: selectedCategory,

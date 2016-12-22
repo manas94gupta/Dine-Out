@@ -34,8 +34,18 @@ var ViewModel = function() {
         self.toggleSidebar(false);
     }
 
+    // Search location when enter is pressed
+    self.searchOnEnter = function(data, event) {
+        var keyCode = (event.which ? event.which : event.keyCode);
+        if (keyCode == 13) {
+            self.locationSearch();
+            return false;
+        }
+        return true;
+    }
+
     // Set the searched location as maps centre
-    self.locationSearch = function(data) {
+    self.locationSearch = function() {
         setLocation(self.locationSearchInput());
         self.closeSidebar();
     }
