@@ -1,3 +1,6 @@
+// This project uses Zomato Api to retrieve its restaurants database.
+// https://developers.zomato.com/api
+
 var API_KEY = '8807504cbe0f07822eb741817f606d60';
 
 function searchZomato(pos) {
