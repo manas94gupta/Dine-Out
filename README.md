@@ -12,7 +12,8 @@ normal mode.
 Users can search for the places in a specific location by entering an address in the
 sidebar, and then they can also search among the retrieved places in the sidebar.        
 Clicking on a marker on the map opens up an info window with ratings, pictures,
-address and other info.
+address and other info.            
+You can view the site [here](https://manas94gupta.github.io/Dine-Out/src/).
 
 ## Instructions
 
