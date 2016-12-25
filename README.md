@@ -23,8 +23,8 @@ address and other info.
 ## Screenshots
 
 
-(https://github.com/manas94gupta/Dine-Out/blob/master/screenshots/desktop.JPG)                  
-(https://github.com/manas94gupta/Dine-Out/blob/master/screenshots/mobile.JPG)
+![Desktop](https://github.com/manas94gupta/Dine-Out/blob/master/screenshots/desktop.JPG)                  
+![Mobile](https://github.com/manas94gupta/Dine-Out/blob/master/screenshots/mobile.JPG)
 
 ## Resources Used
 
