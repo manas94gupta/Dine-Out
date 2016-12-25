@@ -83,7 +83,7 @@ function CenterControl(controlDiv, map) {
 
     // Clicking on the toggle mode button will change the map style
     controlUI.addEventListener('click', function() {
-        if (map.styles == '') {
+        if (map.styles === '') {
             map.setOptions({ styles: mapDarkStyle });
             controlText.innerHTML = 'Normal Mode';
             controlUI.style.backgroundColor = '#d2d4d8';
