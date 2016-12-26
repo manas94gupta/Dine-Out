@@ -30,13 +30,6 @@ function initMap() {
         viewModel.locationSearchInput(locationAutocomplete.getPlace().formatted_address);
     });
 
-    // // This will initiate location search
-    // document.getElementById('locationBtn').addEventListener('click', function() {
-    //   setLocation();
-    // });
-
-    searchZomato({lat: 19.075984, lng: 72.877656});
-
     // Get geolocation of the user
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
