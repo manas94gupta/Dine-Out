@@ -55,6 +55,12 @@ function initMap() {
 //initMap close
 }
 
+// If google maps doesn't load or throws some error
+function mapError() {
+    console.log("Error: Google Maps couldn't load, try again later");
+    viewModel.errorText("Error: Google Maps couldn't load, try again later");
+}
+
 // Add a button on map to toggle map styles
 function CenterControl(controlDiv, map) {
     // Set CSS for the control border.
