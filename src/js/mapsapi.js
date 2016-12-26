@@ -35,6 +35,8 @@ function initMap() {
     //   setLocation();
     // });
 
+    searchZomato({lat: 19.075984, lng: 72.877656});
+
     // Get geolocation of the user
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
