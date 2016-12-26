@@ -153,6 +153,11 @@ function showMarkers() {
     // Extend the boundaries of the map for each marker
     map.fitBounds(bounds);
 
+    // Extend the boundaries of the map for each marker when screen is resized
+    google.maps.event.addDomListener(window, 'resize', function() {
+        map.fitBounds(bounds);
+    });
+
     // If no results found then alert user
     if (markers.length === 0) {
         alert("No results found in 2 kilometer radius");
