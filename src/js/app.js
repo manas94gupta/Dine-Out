@@ -12,17 +12,17 @@ var ViewModel = function() {
     // This will be used to open and close sidebar
     self.toggleSidebar = ko.observable(false);
     // This will hold error text if any
-    self.errorText = ko.observable("");
+    self.errorText = ko.observable('');
     // This will hold the markers data after every request
     self.dineList = ko.observableArray([]);
     // This will hold the search input
-    self.searchInput = ko.observable("");
+    self.searchInput = ko.observable('');
     // Location search input
-    self.locationSearchInput = ko.observable("");
+    self.locationSearchInput = ko.observable('');
     // This will hold the categories data
     self.categories = ko.observableArray(categoriesData);
     // This will hold the selected category
-    self.selectedCategory = ko.observable("");
+    self.selectedCategory = ko.observable('');
 
     // Open sidebar on clicking menu button
     self.openSidebar = function() {
@@ -216,7 +216,7 @@ function toggleBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
         marker.setAnimation(null);
-    }, 1500);
+    }, 1400);
 }
 
 // This function takes the input value in the location text input
