@@ -19,7 +19,9 @@ You can view the site [here](https://manas94gupta.github.io/Dine-Out).
 
 * Source code is in  the `src` directory.
 * Final production code is in the `dist` directory.
-* To build the production code run `gulp useref`.
+* To build the production code `node js` must be installed.
+* `gulp-useref` along with `gulp-uglify`, `gulp-cssnano` and `gulp-if` is used to concatenate and minify css and js files.
+* Run `gulp-useref` to build the final production code.
 
 ## Screenshots
 
